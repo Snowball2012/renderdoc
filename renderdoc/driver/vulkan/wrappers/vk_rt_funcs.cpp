@@ -11,3 +11,18 @@ void WrappedVulkan::vkGetAccelerationStructureBuildSizesKHR(
   ObjDisp(device)->GetAccelerationStructureBuildSizesKHR(Unwrap(device), buildType, pBuildInfo,
                                                          pMaxPrimitiveCounts, pSizeInfo);
 }
+
+void WrappedVulkan::vkCreateAccelerationStructureKHR(
+    VkDevice device, const VkAccelerationStructureCreateInfoKHR *pCreateInfo,
+    const VkAllocationCallbacks *pAllocator, VkAccelerationStructureKHR *pAccelerationStructure)
+{
+  VkAccelerationStructureCreateInfoKHR unwrapped_asci = {};
+  
+  if(pCreateInfo)
+    unwrapped_asci = *pCreateInfo;
+
+  unwrapped_asci.buffer = Unwrap(unwrapped_asci.buffer);
+  ObjDisp(device)->CreateAccelerationStructureKHR(Unwrap(device), pCreateInfo ? &unwrapped_asci : nullptr,
+                                                  pAllocator,
+                                                  pAccelerationStructure);
+}

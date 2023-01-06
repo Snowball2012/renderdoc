@@ -919,6 +919,7 @@
   HookInitExtension(KHR_fragment_shading_rate, CmdSetFragmentShadingRateKHR);                      \
   HookInitExtension(EXT_pageable_device_local_memory, SetDeviceMemoryPriorityEXT);                 \
   HookInitExtension(KHR_acceleration_structure, GetAccelerationStructureBuildSizesKHR);            \
+  HookInitExtension(KHR_acceleration_structure, CreateAccelerationStructureKHR);                   \
   HookInitExtension_Device_Win32();                                                                \
   HookInitExtension_Device_Linux();                                                                \
   HookInitExtension_Device_GGP();                                                                  \
@@ -1644,6 +1645,10 @@
               const VkAccelerationStructureBuildGeometryInfoKHR *, pBuildInfo,                       \
               const uint32_t *, pMaxPrimitiveCounts,                                                 \
               VkAccelerationStructureBuildSizesInfoKHR *, pSizeInfo);                                \
+  HookDefine4(void, vkCreateAccelerationStructureKHR, VkDevice, device,                              \
+              const VkAccelerationStructureCreateInfoKHR *, pCreateInfo,                             \
+              const VkAllocationCallbacks *, pAllocator,                                             \
+              VkAccelerationStructureKHR *, pAccelerationStructure)                                  \
   HookDefine_Win32();                                                                                \
   HookDefine_Linux();                                                                                \
   HookDefine_GGP();                                                                                  \

@@ -2605,4 +2605,9 @@ public:
                                 const VkAccelerationStructureBuildGeometryInfoKHR* pBuildInfo,
                                 const uint32_t* pMaxPrimitiveCounts,
                                 VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
+
+  IMPLEMENT_FUNCTION_SERIALISED(void, vkCreateAccelerationStructureKHR, VkDevice device,
+                                const VkAccelerationStructureCreateInfoKHR *pCreateInfo,
+                                const VkAllocationCallbacks *pAllocator,
+                                VkAccelerationStructureKHR *pAccelerationStructure);
 };
