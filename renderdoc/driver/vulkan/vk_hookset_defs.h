@@ -543,7 +543,8 @@
   DeclExt(KHR_dynamic_rendering);                     \
   DeclExt(KHR_fragment_shading_rate);                 \
   DeclExt(EXT_attachment_feedback_loop_layout);       \
-  DeclExt(EXT_pageable_device_local_memory);
+  DeclExt(EXT_pageable_device_local_memory);          \
+  DeclExt(KHR_acceleration_structure);
 
 // for simplicity and since the check itself is platform agnostic,
 // these aren't protected in platform defines
@@ -657,7 +658,8 @@
   CheckExt(KHR_dynamic_rendering, VK13);                     \
   CheckExt(KHR_fragment_shading_rate, VKXX);                 \
   CheckExt(EXT_attachment_feedback_loop_layout, VKXX);       \
-  CheckExt(EXT_pageable_device_local_memory, VKXX);
+  CheckExt(EXT_pageable_device_local_memory, VKXX);          \
+  CheckExt(KHR_acceleration_structure, VK11);
 
 #define HookInitVulkanInstanceExts_PhysDev()                                                         \
   HookInitExtension(KHR_surface, GetPhysicalDeviceSurfaceSupportKHR);                                \
@@ -916,6 +918,7 @@
   HookInitPromotedExtension(KHR_dynamic_rendering, CmdEndRendering, KHR);                          \
   HookInitExtension(KHR_fragment_shading_rate, CmdSetFragmentShadingRateKHR);                      \
   HookInitExtension(EXT_pageable_device_local_memory, SetDeviceMemoryPriorityEXT);                 \
+  HookInitExtension(KHR_acceleration_structure, GetAccelerationStructureBuildSizesKHR);            \
   HookInitExtension_Device_Win32();                                                                \
   HookInitExtension_Device_Linux();                                                                \
   HookInitExtension_Device_GGP();                                                                  \
@@ -1636,6 +1639,11 @@
               VkPhysicalDeviceFragmentShadingRateKHR *, pFragmentShadingRates);                      \
   HookDefine3(void, vkSetDeviceMemoryPriorityEXT, VkDevice, device, VkDeviceMemory, memory, float,   \
               priority);                                                                             \
+  HookDefine5(void, vkGetAccelerationStructureBuildSizesKHR, VkDevice, device,                       \
+              VkAccelerationStructureBuildTypeKHR, buildType,                                        \
+              const VkAccelerationStructureBuildGeometryInfoKHR *, pBuildInfo,                       \
+              const uint32_t *, pMaxPrimitiveCounts,                                                 \
+              VkAccelerationStructureBuildSizesInfoKHR *, pSizeInfo);                                \
   HookDefine_Win32();                                                                                \
   HookDefine_Linux();                                                                                \
   HookDefine_GGP();                                                                                  \

@@ -2598,4 +2598,11 @@ public:
 
   IMPLEMENT_FUNCTION_SERIALISED(void, vkSetDeviceMemoryPriorityEXT, VkDevice device,
                                 VkDeviceMemory memory, float priority);
+
+  // Raytracing
+  IMPLEMENT_FUNCTION_SERIALISED(void, vkGetAccelerationStructureBuildSizesKHR, VkDevice device,
+                                VkAccelerationStructureBuildTypeKHR buildType,
+                                const VkAccelerationStructureBuildGeometryInfoKHR* pBuildInfo,
+                                const uint32_t* pMaxPrimitiveCounts,
+                                VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
 };
