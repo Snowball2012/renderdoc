@@ -26,3 +26,21 @@ void WrappedVulkan::vkCreateAccelerationStructureKHR(
                                                   pAllocator,
                                                   pAccelerationStructure);
 }
+
+void WrappedVulkan::vkCmdBuildAccelerationStructuresKHR(
+    VkCommandBuffer commandBuffer, uint32_t infoCount,
+    const VkAccelerationStructureBuildGeometryInfoKHR *pInfos,
+    const VkAccelerationStructureBuildRangeInfoKHR *const *ppBuildRangeInfos)
+{
+  SCOPED_DBG_SINK();
+
+  SERIALISE_TIME_CALL(
+      ObjDisp(commandBuffer)->CmdBuildAccelerationStructuresKHR(Unwrap(commandBuffer),
+                                                                infoCount,
+                                                                pInfos, ppBuildRangeInfos));
+
+  if(IsCaptureMode(m_State))
+  {
+      // FallthroughRT Todo: serialize ?
+  }
+}

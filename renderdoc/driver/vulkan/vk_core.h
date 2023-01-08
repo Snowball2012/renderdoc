@@ -2610,4 +2610,8 @@ public:
                                 const VkAccelerationStructureCreateInfoKHR *pCreateInfo,
                                 const VkAllocationCallbacks *pAllocator,
                                 VkAccelerationStructureKHR *pAccelerationStructure);
+  
+  IMPLEMENT_FUNCTION_SERIALISED(void, vkCmdBuildAccelerationStructuresKHR, VkCommandBuffer commandBuffer, uint32_t infoCount,
+                                const VkAccelerationStructureBuildGeometryInfoKHR *pInfos,
+                                const VkAccelerationStructureBuildRangeInfoKHR *const *ppBuildRangeInfos);
 };
