@@ -2614,4 +2614,8 @@ public:
   IMPLEMENT_FUNCTION_SERIALISED(void, vkCmdBuildAccelerationStructuresKHR, VkCommandBuffer commandBuffer, uint32_t infoCount,
                                 const VkAccelerationStructureBuildGeometryInfoKHR *pInfos,
                                 const VkAccelerationStructureBuildRangeInfoKHR *const *ppBuildRangeInfos);
+
+  IMPLEMENT_FUNCTION_SERIALISED(VkDeviceAddress, vkGetAccelerationStructureDeviceAddressKHR, 
+                                VkDevice device,
+                                const VkAccelerationStructureDeviceAddressInfoKHR *pInfo);
 };

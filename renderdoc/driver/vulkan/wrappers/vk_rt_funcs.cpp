@@ -35,12 +35,18 @@ void WrappedVulkan::vkCmdBuildAccelerationStructuresKHR(
   SCOPED_DBG_SINK();
 
   SERIALISE_TIME_CALL(
-      ObjDisp(commandBuffer)->CmdBuildAccelerationStructuresKHR(Unwrap(commandBuffer),
-                                                                infoCount,
-                                                                pInfos, ppBuildRangeInfos));
+    ObjDisp(commandBuffer)->CmdBuildAccelerationStructuresKHR(Unwrap(commandBuffer),
+                                                              infoCount,
+                                                              pInfos, ppBuildRangeInfos));
 
   if(IsCaptureMode(m_State))
   {
       // FallthroughRT Todo: serialize ?
   }
+}
+
+VkDeviceAddress WrappedVulkan::vkGetAccelerationStructureDeviceAddressKHR(
+    VkDevice device, const VkAccelerationStructureDeviceAddressInfoKHR *pInfo)
+{
+  return ObjDisp(device)->GetAccelerationStructureDeviceAddressKHR(Unwrap(device), pInfo);
 }

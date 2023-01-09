@@ -920,7 +920,8 @@
   HookInitExtension(EXT_pageable_device_local_memory, SetDeviceMemoryPriorityEXT);                 \
   HookInitExtension(KHR_acceleration_structure, GetAccelerationStructureBuildSizesKHR);            \
   HookInitExtension(KHR_acceleration_structure, CreateAccelerationStructureKHR);                   \
-  HookInitExtension(KHR_acceleration_structure, CmdBuildAccelerationStructuresKHR);                   \
+  HookInitExtension(KHR_acceleration_structure, CmdBuildAccelerationStructuresKHR);                \
+  HookInitExtension(KHR_acceleration_structure, GetAccelerationStructureDeviceAddressKHR);         \
   HookInitExtension_Device_Win32();                                                                \
   HookInitExtension_Device_Linux();                                                                \
   HookInitExtension_Device_GGP();                                                                  \
@@ -1653,6 +1654,8 @@
   HookDefine4(void, vkCmdBuildAccelerationStructuresKHR, VkCommandBuffer, commandBuffer,             \
               uint32_t, infoCount, const VkAccelerationStructureBuildGeometryInfoKHR *, pInfos,      \
               const VkAccelerationStructureBuildRangeInfoKHR * const *, ppBuildRangeInfos);          \
+  HookDefine2(VkDeviceAddress, vkGetAccelerationStructureDeviceAddressKHR,                           \
+              VkDevice, device, const VkAccelerationStructureDeviceAddressInfoKHR *, info);          \
   HookDefine_Win32();                                                                                \
   HookDefine_Linux();                                                                                \
   HookDefine_GGP();                                                                                  \
